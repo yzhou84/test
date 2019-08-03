@@ -1,0 +1,54 @@
+---
+title: "ANLY 695 - Last Executive "
+subtitle: "-----"
+author: "Jingdan Zhang & Yunqi Zhou"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Directions
+
+To submit this homework you will create the document in Rstudio, and submit (click Knit-Knit to HTML-Publish-Publish to Rpubs) the document to your [Rpubs](http://rpubs.com/) account. Once uploaded your will submit the link to that document on Moodle.
+
+STEP 1 Preparation
+
+```{r}
+
+library(readr)
+income <- read_csv("income.csv")
+View(income)
+
+```
+
+STEP 2 Exploratory Data Analysis
+
+```{r, echo = TRUE}
+par(mfrow=c(2,2))
+hist(income$M_weekly,labels = 'M_weekly')
+hist(income$F_workers,labels = 'F_workers')
+hist(income$M_weekly,labels = 'M_weekly')
+hist(income$F_workers,labels = 'F_workers')
+
+
+
+
+```
+
+
+STEP 3 Regression Analysis
+
+```{r, echo = TRUE}
+model= lm(income$M_workers~income$Industry, data=income)
+summary(model)
+
+```
+
+```{r, echo = TRUE}
+anova(model)
+plot(fitted(model),residuals(model))
+plot(model)
+
+```
+
+
+
